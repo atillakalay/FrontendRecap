@@ -1,3 +1,4 @@
+import { CarResponseModel } from './../../models/carResponseModel';
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/models/car';
 
@@ -9,6 +10,7 @@ import { Car } from 'src/app/models/car';
 export class CarComponent implements OnInit {
 
   cars:Car[]=[]
+  // carResponseModel:CarResponseModel={};
   constructor() { }
 
   ngOnInit(): void {
