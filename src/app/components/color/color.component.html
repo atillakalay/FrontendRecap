@@ -1,1 +1,17 @@
-<p>color works!</p>
+<div *ngIf="dataLoaded==false" class="spinner-border text-warning" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+<table style="background-color:#f5f6fa;border-radius: 20px;" *ngIf="dataLoaded==true" class="table table-borderless">
+    <thead>
+        <tr style="background-color: #04513e;color: white;">
+            <th scope="col">ID</th>
+            <th>Renkler</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let color of colors">
+            <th scope="row">{{color.colorId}}</th>
+            <th scope="row">{{color.colorName}}</th>
+        </tr>
+    </tbody>
+</table>

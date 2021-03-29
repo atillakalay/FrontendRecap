@@ -1,1 +1,17 @@
-<p>brand works!</p>
+<div *ngIf="dataLoaded==false" class="spinner-border text-warning" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+<table style="background-color:#f5f6fa;border-radius: 20px;" *ngIf="dataLoaded==true" class="table table-borderless">
+    <thead>
+        <tr style="background-color: #04513e;color: white;">
+            <th scope="col">Number ID</th>
+            <th>Markalar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let brand of brands">
+            <th scope="row">{{brand.brandId}}</th>
+            <th scope="row">{{brand.brandName}}</th>
+        </tr>
+    </tbody>
+</table>
