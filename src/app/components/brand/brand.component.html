@@ -9,8 +9,8 @@
     </thead>
     <tbody>
 
-        <tr *ngFor="let brand of brands">
-            <th scope="row" (click)="setCurrentBrand(brand)" [class]="getCurrentCategoryClass(brand)" routerLink="/cars/brand/{{brand.brandId}}">{{brand.brandName}}</th>
+        <tr>
+            <th *ngFor="let brand of brands" scope="row" (click)="setCurrentBrand(brand)" [class]="getCurrentCategoryClass(brand)" routerLink="/cars/brand/{{brand.brandId}}">{{brand.brandName}}</th>
         </tr>
     </tbody>
 </table>

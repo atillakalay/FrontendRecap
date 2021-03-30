@@ -8,8 +8,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let color of colors">
-            <th scope="row">{{color.colorName}}</th>
+        <tr>
+            <th *ngFor="let color of colors" scope="row" (click)="setCurrentColor(color)" [class]="getCurrentCategoryClass(color)" routerLink="/cars/color/{{color.colorId}}">{{color.colorName}}</th>
         </tr>
     </tbody>
 </table>

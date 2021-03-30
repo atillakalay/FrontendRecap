@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColorComponent implements OnInit {
   colors: Color[] = [];
+  currentBrand: Color;
   dataLoaded = false;
 
   constructor(private colorService: ColorService) {}
@@ -22,5 +23,17 @@ export class ColorComponent implements OnInit {
       this.colors = response.data;
       this.dataLoaded = true;
     });
+  }
+
+  setCurrentColor(color: Color) {
+    this.currentBrand = color;
+  }
+
+  getCurrentCategoryClass(color: Color) {
+    if(color ==this.currentBrand){
+      return "list-group-item active"
+    }else{
+      return "list-group-item"
+    }
   }
 }
