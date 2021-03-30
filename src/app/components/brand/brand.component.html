@@ -4,14 +4,13 @@
 <table style="background-color:#f5f6fa;border-radius: 20px;" *ngIf="dataLoaded==true" class="table table-borderless">
     <thead>
         <tr style="background-color: #04513e;color: white;">
-            <th scope="col">Number ID</th>
             <th>Markalar</th>
         </tr>
     </thead>
     <tbody>
+
         <tr *ngFor="let brand of brands">
-            <th scope="row">{{brand.brandId}}</th>
-            <th scope="row">{{brand.brandName}}</th>
+            <th scope="row" (click)="setCurrentBrand(brand)" [class]="getCurrentCategoryClass(brand)" routerLink="/cars/brand/{{brand.brandId}}">{{brand.brandName}}</th>
         </tr>
     </tbody>
 </table>
