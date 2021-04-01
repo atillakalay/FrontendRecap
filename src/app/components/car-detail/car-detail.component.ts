@@ -25,13 +25,13 @@ export class CarDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       if (params["carId"]) {
         this.getCarById(params["carId"]);
-        // this.getByIdCarImage(params["id"]);
+        this.getByIdCarImage(params["id"]);
       } 
     })
   }
 
-  getByIdCarImage(id: number) {
-    this.carImageService.getByIdCarImage(id).subscribe((response) => {
+  getByIdCarImage(carId: number) {
+    this.carImageService.getByIdCarImage(carId).subscribe((response) => {
       this.carImages = response.data;
       this.dataLoaded = true;
     });
