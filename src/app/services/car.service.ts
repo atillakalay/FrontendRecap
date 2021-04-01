@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class CarService {
   apiUrl = 'https://localhost:44312/api/';
+
   constructor(private httpClient: HttpClient) {}
 
   getCars(): Observable<ListResponseModel<Car>> {
@@ -16,13 +17,17 @@ export class CarService {
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
 
-  getCarsByBrand(brandId: number): Observable<ListResponseModel<Car>> {
-    let newPath = this.apiUrl + 'cars/getbybrandId?brandId=' + brandId;
+  getCarByBrandId(brandId: number): Observable<ListResponseModel<Car>> {
+    let newPath = this.apiUrl + 'cars/getallbybrandid?brandId=' + brandId;
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
 
-  getCarsByColor(colorId: number): Observable<ListResponseModel<Car>> {
-    let newPath = this.apiUrl + 'cars/getbycolorId?colorId=' + colorId;
+  getCarByColorId(colorId: number): Observable<ListResponseModel<Car>> {
+    let newPath = this.apiUrl + 'cars/getallbycolorid?colorId=' + colorId;
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
+  getCarById(carId:number):Observable<ListResponseModel<Car>>{
+    let newPath = this.apiUrl + 'cars/getbyid?carId=' + carId;
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
 }

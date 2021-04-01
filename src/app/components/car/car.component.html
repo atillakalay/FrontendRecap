@@ -3,25 +3,36 @@
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
+<div style="margin-top: 15px;">
+    <label style="color: green;font-size: large;font-weight: bolder;">Ara</label></div>
+<div class="mb-3">
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="exampleFormControlInput1" placeholder="Modele göre ara" id="filterText">
+</div>
+<div class="alert alert-success" *ngIf="filterText">
+    <label>{{filterText}} aradınız </label>
+</div>
+
 <table *ngIf="dataLoaded==true" class="table table-dark">
     <thead>
         <tr>
             <th>Araba Id</th>
             <th>Marka</th>
+            <th>Model</th>
             <th>Renk</th>
-            <th>Model Yılı</th>
             <th>Fiyat</th>
-            <th>Özellikler</th>
+            <th>KDV'li Fiyat</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let car of cars">
+        <tr *ngFor="let car of cars " (click)="setCurrentCarDetail(car)" routerLink="/cars/cardetail/{{car.carId}}">
             <td>{{car.carId}}</td>
-            <td>{{car.brandName}}</td>
-            <td>{{car.colorName}}</td>
-            <td>{{car.modelYear}}</td>
-            <td>{{car.dailyPrice}}</td>
-            <td>{{car.description}}</td>
+            <td>{{car.brandName |uppercase}}</td>
+            <td>{{car.carName |uppercase}}</td>
+            <td>{{car.colorName |uppercase}} </td>
+            <td>{{car.dailyPrice |currency}}</td>
+            <td>{{car.dailyPrice |vatAdded:18 |currency}}</td>
         </tr>
+        <H5 *ngIf="currentCar">{{currentCar.carName}}</H5>
     </tbody>
+
 </table>
