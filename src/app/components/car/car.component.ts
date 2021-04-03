@@ -1,3 +1,5 @@
+import { CarImageService } from './../../services/car-image.service';
+import { CarImage } from './../../models/carImage';
 import { CarService } from './../../services/car.service';
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/models/car';
@@ -10,12 +12,15 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
+  carImage: CarImage[] = [];
   currentCar: Car;
   dataLoaded = false;
+  imgUrl: string="https://localhost:44312/"
   filterText = '';
 
   constructor(
     private carService: CarService,
+    private carImageService: CarImageService,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService
   ) {}
@@ -58,7 +63,7 @@ export class CarComponent implements OnInit {
   getCarById(carId: number) {
     this.carService.getCarById(carId).subscribe((response) => {
       this.cars = response.data;
-      this.dataLoaded = false;
+      this.dataLoaded = true;
     });
   }
   setCurrentCarDetail(car: Car) {

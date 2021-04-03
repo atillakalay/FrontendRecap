@@ -1,23 +1,27 @@
-<div class="container">
-
-    <div *ngFor="let carImage of carImages">
-        <img src="https://localhost:44312/Images/{{carImage.imagePath}}" class="rounded img-fluid" />
-    </div>
+<div *ngFor="let carImage of carImages">
+    <img class="rounded float-start" src="https://localhost:44312/{{ carImage.imagePath }}" class="d-block w-100" height="365" />
 </div>
 
-<div class="container">
-    <div *ngIf="!dataLoaded" class="spinner-grow" role="status"></div>
-    <div *ngFor="let car of cars" class="row">
-        <div class="col-md-5">
-            <h4>
-                <strong>{{ car.brandName }}</strong>
-            </h4>
-            <h5>Açıklama : {{ car.description }}</h5>
-            <h6>Renk : {{ car.colorName }}</h6>
-            <h6>Model Yılı : {{ car.modelYear }}</h6>
-        </div>
-        <div class="col-md-7">
-            <h3>Fiyat (Günlük) : {{ car.dailyPrice }} TL</h3>
-        </div>
-    </div>
-</div>
+<table *ngIf="dataLoaded==true" class="table table-dark">
+    <thead>
+        <tr>
+            <th>Araba Id</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Renk</th>
+            <th>Fiyat</th>
+            <th>KDV'li Fiyat</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let car of cars">
+            <td>{{car.carId}}</td>
+            <td>{{car.brandName |uppercase}}</td>
+            <td>{{car.carName |uppercase}}</td>
+            <td>{{car.colorName |uppercase}} </td>
+            <td>{{car.dailyPrice |currency}}</td>
+            <td>{{car.dailyPrice |vatAdded:18 |currency}}</td>
+        </tr>
+    </tbody>
+
+</table>

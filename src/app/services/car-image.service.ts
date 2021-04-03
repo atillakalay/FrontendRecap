@@ -20,4 +20,10 @@ export class CarImageService {
     let newPath = this.apiUrl + 'carImages/getall';
     return this.httpClient.get<ListResponseModel<CarImage>>(newPath);
   }
+
+  getImage(imagePath:string){
+    let path = this.apiUrl + imagePath;
+    return path;
+  }
+
 }
