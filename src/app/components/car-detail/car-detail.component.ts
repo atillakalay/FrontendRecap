@@ -28,7 +28,6 @@ export class CarDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.getCarById(params['carId']);
-      this.getByIdCarImage(params['carId']);
     });
   }
 
@@ -50,14 +49,5 @@ export class CarDetailComponent implements OnInit {
       this.cars = response.data;
       this.dataLoaded = true;
     });
-  }
-
-
-  getSliderClassName(index: Number) {
-    if (index == 0) {
-      return 'carousel-item active';
-    } else {
-      return 'carousel-item';
-    }
   }
 }

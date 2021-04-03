@@ -1,27 +1,30 @@
-<div *ngFor="let carImage of carImages">
-    <img class="rounded float-start" src="https://localhost:44312/{{ carImage.imagePath }}" class="d-block w-100" height="365" />
+<div *ngIf="dataLoaded == false" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Yükleniyor...</span>
 </div>
 
-<table *ngIf="dataLoaded==true" class="table table-dark">
-    <thead>
-        <tr>
-            <th>Araba Id</th>
-            <th>Marka</th>
-            <th>Model</th>
-            <th>Renk</th>
-            <th>Fiyat</th>
-            <th>KDV'li Fiyat</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let car of cars">
-            <td>{{car.carId}}</td>
-            <td>{{car.brandName |uppercase}}</td>
-            <td>{{car.carName |uppercase}}</td>
-            <td>{{car.colorName |uppercase}} </td>
-            <td>{{car.dailyPrice |currency}}</td>
-            <td>{{car.dailyPrice |vatAdded:18 |currency}}</td>
-        </tr>
-    </tbody>
-
-</table>
+<div class="row">
+    <div style="margin-top: 10px;" *ngFor="let car of cars">
+        <div class="card border-0 mb-3">
+            <img src="{{imageBasePath}}{{ car.imagePath}}">
+            <ul class="list-group list-group-flush" style="font-weight:bolder;">
+                <li class="list-group-item">
+                    <span class="float-start">Marka</span>
+                    <span class="float-end">{{car.brandName}}</span>
+                </li>
+                <li class="list-group-item">
+                    <span class="float-start">Renk </span>
+                    <span class="float-end">{{car.colorName}}</span>
+                </li>
+                <li class="list-group-item">
+                    <span class="float-start">Model Yılı </span>
+                    <span class="float-end">{{car.modelYear}}</span>
+                </li>
+                <li class="list-group-item">
+                    <span class="float-start">Özellikler </span>
+                    <span class="float-end">{{car.description}}</span>
+                </li>
+                <p class="card-text text-center h3 mt-3">{{car.dailyPrice }}₺ /Gün</p>
+            </ul>
+        </div>
+    </div>
+</div>
