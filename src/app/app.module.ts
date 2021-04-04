@@ -14,7 +14,6 @@ import { ColorComponent } from './components/color/color.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
-import { from } from 'rxjs';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
@@ -45,7 +44,7 @@ import { FilterColorPipePipe } from './pipes/filter-color-pipe.pipe';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      positionClass: 'tost-bottom-right',
+      positionClass: 'toast-bottom-right'
     }),
   ],
   providers: [],

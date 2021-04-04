@@ -3,7 +3,7 @@
 </div>
 
 <div class="mb-3">
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Araç adı giriniz" style="margin-top: 15px;">
+    <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Araç adı giriniz" style="margin-top: 15px;">
 </div>
 <div>
 
@@ -38,8 +38,7 @@
             </ul>
             <div class="card-body">
                 <div style="margin-top: 50px;">
-                    <a href="" class="btn btn-default " style="background-color: black; font-weight: bold; color: white;">Şimdi Kirala</a>
-                    <a (click)="setCurrentCarDetail(car)" routerLink="/cars/car-detail/{{car.carId}}" class="btn btn-default" style="background-color: green;  font-weight: bold; color: white;margin-left: 10px;">Detaylı incele</a>
+                    <a (click)="setCurrentCarDetail(car)" routerLink="/cars/car-detail/{{car.carId}}" class="btn btn-default" style="background-color: green;  font-weight: bold; color: white;width: 270px; margin-left: -5px;">Detaylı incele</a>
                 </div>
             </div>
         </div>

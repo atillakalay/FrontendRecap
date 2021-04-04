@@ -6,6 +6,23 @@
     <div style="margin-top: 10px;" *ngFor="let car of cars">
         <div class="card border-0 mb-3">
             <img src="{{imageBasePath}}{{ car.imagePath}}">
+
+            <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div *ngFor="let car of cars let i = index" [ngClass]="getSliderClassName(i)">
+                        <img src="{{imageBasePath}}/{{car.imagePath}}" class="d-block w-100" width="800" height="500" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div> -->
+
             <ul class="list-group list-group-flush" style="font-weight:bolder;">
                 <li class="list-group-item">
                     <span class="float-start">Marka</span>
@@ -17,14 +34,17 @@
                 </li>
                 <li class="list-group-item">
                     <span class="float-start">Model Yılı </span>
-                    <span class="float-end">{{car.modelYear}}</span>
+                    <span class="float-end">{{car.modelYear |date}}</span>
                 </li>
                 <li class="list-group-item">
                     <span class="float-start">Özellikler </span>
                     <span class="float-end">{{car.description}}</span>
                 </li>
+
                 <p class="card-text text-center h3 mt-3">{{car.dailyPrice }}₺ /Gün</p>
+                <a (click)="rentCar(car)" class="btn btn-default " style="background-color: black; font-weight: bold; color: white;" type="button" routerLink="/cars/rental/{{car.carId}}">Kirala</a>
             </ul>
+
         </div>
     </div>
 </div>

@@ -15,7 +15,7 @@ export class CarComponent implements OnInit {
   carImage: CarImage[] = [];
   currentCar: Car;
   dataLoaded = false;
-  imgUrl: string="https://localhost:44312/"
+  imgUrl: string = 'https://localhost:44312/';
   filterText = '';
 
   constructor(
@@ -69,4 +69,5 @@ export class CarComponent implements OnInit {
   setCurrentCarDetail(car: Car) {
     this.currentCar = car;
   }
+  
 }
