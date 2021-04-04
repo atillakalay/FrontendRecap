@@ -2,8 +2,14 @@
     <span class="visually-hidden">Yükleniyor...</span>
 </div>
 
+<div class="mb-3">
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Araç adı giriniz" style="margin-top: 15px;">
+</div>
+<div>
+
+</div>
 <div class="row">
-    <div class="col-lg-4 col-md-6 shadow-lg p-3 mb-5 bg-body rounded " *ngFor="let car of cars">
+    <div class="col-lg-4 col-md-6 shadow-lg p-3 mb-5 bg-body rounded " *ngFor="let car of cars | filterPipe:filterText ">
         <div class="card border-0 mb-3" style="width: 18rem;">
             <img src="{{imgUrl}}{{ car.imagePath}}" class="card-img-top" alt="..." height="170px">
             <div class="card-body text-center">
@@ -14,15 +20,15 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <span class="float-start">Marka</span>
-                    <span class="float-end">{{car.brandName}}</span>
+                    <span class="float-end">{{car.brandName |uppercase }} </span>
                 </li>
                 <li class="list-group-item">
                     <span class="float-start">Renk </span>
-                    <span class="float-end">{{car.colorName}}</span>
+                    <span class="float-end">{{car.colorName }}</span>
                 </li>
                 <li class="list-group-item">
                     <span class="float-start">Model Yılı </span>
-                    <span class="float-end">{{car.modelYear}}</span>
+                    <span class="float-end">{{car.modelYear |date}}</span>
                 </li>
                 <li class="list-group-item">
                     <span class="float-start">Özellikler </span>

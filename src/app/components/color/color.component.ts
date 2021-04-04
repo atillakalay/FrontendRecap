@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColorComponent implements OnInit {
   colors: Color[] = [];
+  filterText = '';
   currentBrand: Color;
   dataLoaded = false;
 
@@ -30,10 +31,10 @@ export class ColorComponent implements OnInit {
   }
 
   getCurrentCategoryClass(color: Color) {
-    if(color ==this.currentBrand){
-      return "list-group-item active"
-    }else{
-      return "list-group-item"
+    if (color == this.currentBrand) {
+      return 'list-group-item active';
+    } else {
+      return 'list-group-item';
     }
   }
 }

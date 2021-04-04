@@ -1,15 +1,21 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-warning" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
-<table style="background-color:#f5f6fa;border-radius: 20px;" *ngIf="dataLoaded==true" class="table table-borderless">
-    <thead>
-        <tr style="background-color: #04513e;color: white;">
-            <th>Renkler</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th *ngFor="let color of colors" scope="row" (click)="setCurrentColor(color)" [class]="getCurrentCategoryClass(color)" routerLink="/cars/color/{{color.colorId}}">{{color.colorName}}</th>
-        </tr>
-    </tbody>
-</table>
+
+
+<div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="background-color: #0f3e1b;color: white; font-weight: bolder;">
+        RENKLER
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="mb-3">
+            <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Renk giriniz" style="margin-top: 15px;">
+        </div>
+        <div>
+            <div class="accordion-body" *ngFor="let color of colors |filterColorPipe:filterText" scope="row" (click)="setCurrentColor(color)" [class]="getCurrentCategoryClass(color)" routerLink="/cars/color/{{color.colorId }}">
+                {{color.colorName |uppercase}}
+            </div>
+        </div>
+    </div>

@@ -1,19 +1,20 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-warning" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
-<table style="background-color:#f5f6fa;border-radius: 20px;" *ngIf="dataLoaded==true" class="table table-borderless">
-    <thead>
-        <tr style="background-color: #04513e;color: white;">
-            <th>Markalar</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
 
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="background-color: #0f3e1b;color: white; font-weight: bolder;">
+         MARKALAR
+        </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
             <div class="mb-3">
-                <input type="text" [(ngModel)]="filterText" class="form-control" id="exampleFormControlInput1" placeholder="Marka ara" id="filterText">
+                <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Marka giriniz" style="margin-top: 15px;">
             </div>
-            <th *ngFor="let brand of brands" scope="row" (click)="setCurrentBrand(brand)" [class]="getCurrentCategoryClass(brand)" routerLink="/cars/brand/{{brand.brandId}}">{{brand.brandName}}</th>
-        </tr>
-    </tbody>
-</table>
+            <div>
+                <div class="accordion-body" *ngFor="let brand of brands |filterBrandPipe:filterText" (click)="setCurrentBrand(brand)" [class]="getCurrentCategoryClass(brand)" routerLink="/cars/brand/{{brand.brandId}}">{{brand.brandName |uppercase}}</div>
+            </div>
+        </div>
+    </div>
