@@ -69,5 +69,4 @@ export class CarComponent implements OnInit {
   setCurrentCarDetail(car: Car) {
     this.currentCar = car;
   }
-  
 }
