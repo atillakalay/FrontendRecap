@@ -55,21 +55,23 @@ export class CarUpdateComponent implements OnInit {
     });
   }
 
-  update() {
-    if (this.carUpdateForm.valid) {
-      let carModel = Object.assign({}, this.carUpdateForm.value);
-      this.carService.updateCar(carModel).subscribe(
-        (response) => {
-          console.log(response);
-          this.toastrService.success(response.message, 'Başarılı');
-        },
-        (responseError) => {
-          console.log(responseError);
-          this.toastrService.error(responseError.error);
-        });
-    } else {
-      this.toastrService.error('Formunuz eksik', 'Dikkat');
+  update(){
+    if(this.carUpdateForm.valid){
+      let carModel = Object.assign({},this.carUpdateForm.value)
+      this.carService.updateCar(carModel).subscribe(response=>{
+        this.toastrService.success(response.message,"Başarılı")
+      },responseError=>{
+        if(responseError.error.Errors.length>0){
+          for (let i = 0; i <responseError.error.Errors.length; i++) {
+            this.toastrService.error(responseError.error.Errors[i].ErrorMessage
+              ,"Doğrulama hatası")
+          }       
+        } 
+      })
+    }else{
+      this.toastrService.error("Formunuz eksik","Dikkat")
     }
   }
 
-}
+  }
+
