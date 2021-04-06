@@ -9,6 +9,7 @@ import { ResponseModel } from '../models/responseModel';
   providedIn: 'root',
 })
 export class CarService {
+  currentCar: Car;
   apiUrl = 'https://localhost:44312/api/';
 
   constructor(private httpClient: HttpClient) {}
@@ -38,7 +39,22 @@ export class CarService {
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
 
-  addCar(car:Car){
-    return this.httpClient.post(this.apiUrl+"cars/add",car)
-   }
+  addCar(car: Car): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(this.apiUrl + 'cars/add', car);
+  }
+  updateCar(car: Car): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(
+      this.apiUrl + 'cars/update',
+      car
+    );
+  }
+
+  getCarDetailsByCarId(carId: number): Observable<ListResponseModel<Car>> {
+    let newPath = this.apiUrl + 'cars/getcardetails?carId=' + carId;
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
+
+  getCurrentCar() {
+    return this.currentCar;
+  }
 }

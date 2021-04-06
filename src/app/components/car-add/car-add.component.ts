@@ -50,6 +50,7 @@ export class CarAddComponent implements OnInit {
       dailyPrice: ['', Validators.required],
     });
   }
+  
   getBrands(){
     this.brandService.getBrands().subscribe((response)=>{
       this.brands=response.data
@@ -62,13 +63,18 @@ export class CarAddComponent implements OnInit {
   }
 
 
-  addCar() {
+  add() {
     if (this.carAddForm.valid) {
       let carModel = Object.assign({}, this.carAddForm.value);
-      this.carService.addCar(carModel).subscribe((data) => {
-        console.log(data);
-        this.toastrService.success('Araç eklendi', 'Başarılı');
-      });
+      this.carService.addCar(carModel).subscribe(
+        (response) => {
+          console.log(response);
+          this.toastrService.success(response.message, 'Başarılı');
+        },
+        (responseError) => {
+          console.log(responseError);
+          this.toastrService.error(responseError.error);
+        });
     } else {
       this.toastrService.error('Formunuz eksik', 'Dikkat');
     }
