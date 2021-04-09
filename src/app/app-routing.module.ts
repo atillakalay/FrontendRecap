@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'cars/add', component: CarAddComponent },
   { path: 'brands/add', component: BrandAddComponent },
   { path: 'colors/add', component: ColorAddComponent },
-  { path: 'cars/update', component: CarUpdateComponent },
+  { path: 'cars/update/:carId', component: CarUpdateComponent },
+  { path: 'cars/car=update/:carId', component: CarUpdateComponent },
 ];
 
 @NgModule({

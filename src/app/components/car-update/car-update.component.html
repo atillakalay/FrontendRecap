@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4>Yeni araba ekle</h4>
+                <h4>Araba Bilgi ekle</h4>
             </div>
             <div class="card-body">
                 <form [formGroup]="carUpdateForm">
@@ -12,7 +12,7 @@
                             <select class="form-select" id="brandId" formControlName="brandId" aria-label="Default select example">
                                     <option 
                                     *ngFor="let brand of brands"
-                                    [ngValue]="brand.brandId ">{{brand.brandName}}</option>
+                                    [ngValue]="brand.brandId ">{{brand.brandId}}</option>
                                 </select>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                     <div class="mb-3">
                         <label for="carName">Araç Adı</label>
                         <div class=form-group>
-                            <input type="text" id="carName" formControlName="carName" class="form-control" placeholder="Araç adı" />
+                            <input type="text" id="carName" formControlName="carName" class="form-control" placeholder="{{car.carName}}" />
                         </div>
 
                     </div>
@@ -38,21 +38,21 @@
                     <div class="mb-3">
                         <label for="modelYear">Model Yılı</label>
                         <div class=form-group>
-                            <input type="date" id="modelYear" formControlName="modelYear" class="form-control" placeholder="Model Year" />
+                            <input type="date" id="modelYear" formControlName="modelYear" class="form-control" placeholder="{{car.modelYear}}" />
                         </div>
 
                     </div>
                     <div class="mb-3">
                         <label for="dailyPrice">Günlük Fiyat</label>
                         <div class=form-group>
-                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Daily Price" />
+                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="{{car.dailyPrice}}" />
                         </div>
 
                     </div>
                     <div class="mb-3">
                         <label for="description">Özellikler</label>
                         <div class=form-group>
-                            <input type="text" id="description" formControlName="description" class="form-control" placeholder="Description" />
+                            <input type="text" id="description" formControlName="description" class="form-control" placeholder="{{car.description}}" />
                         </div>
 
                     </div>
@@ -60,6 +60,7 @@
             </div>
             <div class="card-footer">
                 <button class="btn btn-fill btn-primary" (click)="update()">Güncelle</button>
+                <button class="btn btn-fill btn-secondary mx-3" routerLink="/cars/car-detail/{{car.carId}}">Geri dön</button>
             </div>
         </div>
     </div>
